@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const Device = require('../models/device');
+const mongoose = require('mongoose');
 router.get('/', function (req, res, next) {
   res.status(200).send({
     status: 'ok',
