@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+$connection = new MongoClient();
+$db = $connection->mydb;
+$mObj = $db->DetectedDevices->find();
+?>
 <html>
 <title>Smart Presence</title>
 <meta charset="UTF-8">
@@ -6,7 +11,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://api.jquery.com/jquery.get/"></script>
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -37,8 +41,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="index.php" class="w3-bar-item w3-button w3-padding w3-blue "><i class="fa fa-users fa-fw"></i>  Daftar Mahasiswa </a>
-    <a href="Data_masuk.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Daftar Mac Address Masuk</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding "><i class="fa fa-users fa-fw"></i>  Daftar Mahasiswa </a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue "><i class="fa fa-eye fa-fw"></i>  Daftar Mac Address Masuk</a>
     <!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
@@ -103,12 +107,35 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h5>Input</h5>
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
       <tr>
-        <th>Nama Bluetooth</th>
+        <th>Name</th>
         <th>Mac Address</th>
         <th>RSSI</th>
-        
       </tr>
-      
+      <tr>
+        <td>Redmi</td>
+        <td>DD:60:22:BA:D1:8D</td>
+        <td>-51</td>
+      </tr>
+      <tr>
+        <td>For Me</td>
+        <td>8B:5D:07:FE:7E:AC</td>
+        <td>-51</td>
+      </tr>
+      <tr>
+        <td>Pudge</td>
+        <td>49:9B:89:73:32:52</td>
+        <td>-51</td>
+      </tr>
+      <tr>
+        <td>Samsung J7</td>
+        <td>87:CF:56:B9:04:58</td>
+        <td>-51</td>
+      </tr>
+      <tr>
+        <td>IPHONE</td>
+        <td>DC:B0:E0:2C:D8:C0</td>
+        <td>-51</td>
+      </tr>
     </table><br>
     
   </div>
@@ -120,7 +147,28 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
   </div>
   <br>
-  
+  <div class="w3-container w3-dark-grey w3-padding-32">
+    <div class="w3-row">
+      <div class="w3-container w3-third">
+        <h5 class="w3-bottombar w3-border-green">Demographic</h5>
+        <p>Language</p>
+        <p>Country</p>
+        <p>City</p>
+      </div>
+      <div class="w3-container w3-third">
+        <h5 class="w3-bottombar w3-border-red">System</h5>
+        <p>Browser</p>
+        <p>OS</p>
+        <p>More</p>
+      </div>
+      <div class="w3-container w3-third">
+        <h5 class="w3-bottombar w3-border-orange">Target</h5>
+        <p>Users</p>
+        <p>Active</p>
+        <p>Geo</p>
+        <p>Interests</p>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->

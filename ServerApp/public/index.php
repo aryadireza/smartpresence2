@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+$connection = new MongoClient();
+$db = $connection->mydb;
+$mObj = $db->Mahasiswa->find();
+?>
 <html>
 <title>Smart Presence</title>
 <meta charset="UTF-8">
@@ -6,7 +10,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://api.jquery.com/jquery.get/"></script>
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -104,11 +107,19 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
       <tr>
         <th>Nama Bluetooth</th>
-        <th>Mac Address</th>
-        <th>RSSI</th>
-        
+        <th>Nomor Meja (NIM)</th>
       </tr>
-      
+      <?php
+        foreach($mObj as $row){
+      ?>
+        <tr>
+          <td><?php echo $row['BluetoothName']?></td>
+          <td><?php echo $row['NomorMeja']?></td>
+          
+        </tr>
+        <?php
+          }
+          ?>
     </table><br>
     
   </div>
