@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var mongodb = require('mongodb'); // includes mongoDB 
+var mongodbClient = mongodb.MongoClient;
 
 const Device = require('../models/device');
 const mongoose = require('mongoose');
@@ -11,9 +13,16 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/listdata', function (req, res, next) {
-  res.status(200).send({
-    status: 'ok',
-    result: {}
+  mongodbClient.connect('mongodb://localhost:27017/', (err, client, db) => {
+    if (err) return console.log(err)
+    db = client.db('mydb')
+    db.collection("DetectedDevices").find().toArray(function (err, results) {
+      if (err) return res.status(500).send({err: err})
+      return res.status(200).send({
+        status: 'ok',
+        results: results
+      })
+    })
   })
 });
 
