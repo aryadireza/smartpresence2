@@ -20,7 +20,7 @@ router.get('/listdatascan', function (req, res, next) {
       if (err) return res.status(500).send({err: err})
       return res.status(200).send({
         status: 'ok',
-        results: hasilscan
+        results: results
       })
     })
   })
@@ -33,11 +33,12 @@ router.get('/listdataMahasiswa', function (req, res, next) {
       if (err) return res.status(500).send({err: err})
       return res.status(200).send({
         status: 'ok',
-        results: hasilmahasiswa
+        results: results
       })
     })
   })
 });
+
 router.post('/emit', function (req, res, next) {
   let reqBody = req.body
   console.log('req body:', reqBody)
