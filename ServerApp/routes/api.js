@@ -39,6 +39,19 @@ router.get('/listdataMahasiswa', function (req, res, next) {
   })
 });
 
+router.get('/listdatafilter', function (req, res, next) {
+  mongodbClient.connect('mongodb://localhost:27017/', (err, client, db) => {
+    if (err) return res.status(500).send({err:err})
+    db = client.db('mydb')
+    db.collection("DetectedDevices").find({value:{$gt:-70}}).toArray(function (err, results) {
+      if (err) return res.status(500).send({err: err})
+      return res.status(200).send({
+        status: 'ok',
+        results: results
+      })
+    })
+  })
+});
 router.post('/emit', function (req, res, next) {
   let reqBody = req.body
   console.log('req body:', reqBody)
